@@ -39,10 +39,6 @@
 						<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
 					</div>
 
-					<div class="field">
-						<%= f.label :current_password, class: 'label' %> <i>(we need your current password to confirm your changes)</i>
-						<%= f.password_field :current_password, autocomplete: "current-password", class: 'input' %>
-					</div>
 
 					<div class="field">
 						<%= f.submit "Update", class: 'button is-danger is-fullwidth' %>
