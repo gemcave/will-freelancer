@@ -16,7 +16,6 @@
 																<%= image_tag avatar_url(current_user), class: "is-rounded" %>
 															</figure>
 														</div>
-                       B     
                             <div class="card-content">
 
                                 <!-- Upload Button -->
@@ -24,9 +23,10 @@
 																	<p class="title is-5"><%= current_user.full_name %></p>
 																	<%= form_for :user, url: users_edit_url(@user), action: :update, method: :post do |f| %>
 																		<div class="file">
-																			<label class="button is-primary is-outlined is-fullwidth"></label>
-																			<%= f.file_field :avatar, class: "file-input", onchange: "this.form.submit();" %>
-																			<i class="fas fa-upload"></i>&nbsp;&nbsp;&nbsp; Upload Avatar
+																			<label class="button is-primary is-outlined is-fullwidth">
+																				<%= f.file_field :avatar, class: "file-input", onchange: "this.form.submit();" %>
+																				<i class="fas fa-upload"></i>&nbsp;&nbsp;&nbsp; Upload Avatar
+																			</label>
 																		</div>
 																	<% end %>
 																</div>
