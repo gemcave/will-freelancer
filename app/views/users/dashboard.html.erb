@@ -13,20 +13,22 @@
                             <!-- Avatar -->
                             <div class="card-content is-horizontal-center is-flex">
 															<figure class="image is-128x128">
-																<%= image_tag 'icon_default_avatar.png' %>
+																<%= image_tag avatar_url(current_user), class: "is-rounded" %>
 															</figure>
 														</div>
-                            
+                       B     
                             <div class="card-content">
 
                                 <!-- Upload Button -->
                                 <div class="content has-text-centered">
-																	<p class="title is-5">
-																		<%= current_user.full_name %>
-																	</p>
-																		<button class="button is-primary is-outlined is-fullwidth">
-																			Upload Avatar
-																		</button>
+																	<p class="title is-5"><%= current_user.full_name %></p>
+																	<%= form_for :user, url: users_edit_url(@user), action: :update, method: :post do |f| %>
+																		<div class="file">
+																			<label class="button is-primary is-outlined is-fullwidth"></label>
+																			<%= f.file_field :avatar, class: "file-input", onchange: "this.form.submit();" %>
+																			<i class="fas fa-upload"></i>&nbsp;&nbsp;&nbsp; Upload Avatar
+																		</div>
+																	<% end %>
 																</div>
                                 <hr class="h-10">
                                 
@@ -48,8 +50,12 @@
 																		</div>
 																	</div>
 																	<div class="content">
-																		<%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-from', class: }  do |f| %>
-																			
+																		<%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-from', class: "is-hidden" }  do |f| %>
+																		<div class="field">
+																			<%= f.text_field :from, autofocus: true, autocomplete: 'form', class: 'input' %>
+																		</div>
+																		<a class="toggle button is-light" aria-controls="user-from">Cancel</a>
+																		<%= f.submit "Save", class: "button is-danger" %>
 																		<% end %>
 																	</div>
 																</article>                                
@@ -63,6 +69,15 @@
 																				<strong><% if current_user.status %>Online<% else %>Offline<% end %></strong> <i class="toggle far fa-edit" aria-controls="user-status"></i>
 																			</div>
 																		</div>
+																		<div class="content">
+																		<%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-status', class: "is-hidden" }  do |f| %>
+																		<div class="field">
+																			<%= f.select(:status, options_for_select([["Online", true],["Offline", false]]), {}, {class: "select is-fullwidth"})%>
+																		</div>
+																		<a class="toggle button is-light" aria-controls="user-status">Cancel</a>
+																		<%= f.submit "Save", class: "button is-danger" %>
+																		<% end %>
+																	</div> 
 																</article>
 
                             </div>
@@ -75,11 +90,55 @@
                             <div class="card-content">
 
                                 <!-- About -->
-                                <article></article>
+                                <article>
+																	<div class="media">
+																		<div class="media-content">
+																			<p>
+																				<strong>About Yourself</strong>
+																				<br>
+																				<%= current_user.about %>
+																			</p>
+																		</div>
+																		<div class="media-right">
+																			<i class="toggle far fa-edit" aria-controls="user-about"></i>
+																		</div>
+																	</div>
+																	<div class="content">
+																		<%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-about', class: "is-hidden" }  do |f| %>
+																		<div class="field">
+																			<%= f.text_area :about, autofocus: true, autocomplete: 'form', class: 'input' %>
+																		</div>
+																		<a class="toggle button is-light" aria-controls="user-about">Cancel</a>
+																		<%= f.submit "Save", class: "button is-danger" %>
+																		<% end %>
+																	</div>
+																</article>
                                 <hr class="h-10">
 
                                 <!-- Languages -->
-                                <article></article>
+                                <article>
+																	<div class="media">
+																		<div class="media-content">
+																			<p>
+																				<strong>Language</strong>
+																				<br>
+																				<%= current_user.about %>
+																			</p>
+																		</div>
+																		<div class="media-right">
+																			<i class="toggle far fa-edit" aria-controls="user-language"></i>
+																		</div>
+																	</div>
+																	<div class="content">
+																		<%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-language', class: "is-hidden" }  do |f| %>
+																		<div class="field">
+																			<%= f.text_field :language, autofocus: true, autocomplete: 'form', class: 'input' %>
+																		</div>
+																		<a class="toggle button is-light" aria-controls="user-language">Cancel</a>
+																		<%= f.submit "Save", class: "button is-danger" %>
+																		<% end %>
+																	</div>
+																</article>
                                 <hr class="h-10">
                                 
                                 <!-- Linked Account -->

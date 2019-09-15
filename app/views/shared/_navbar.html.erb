@@ -37,19 +37,32 @@
 						</div> 
 					<% else %>
 						<div class="navbar-item has-dropdown is-hoverable">
-							<a class="navbar-item"><%= current_user.full_name %></a>
+							<a class="navbar-item"><%= current_user.email %></a>
 							<div class="navbar-dropdown">
-							<%= link_to 'Profile', edit_user_registration_path, class: 'navbar-item'%>
+								<%= link_to 'Profile', edit_user_registration_path, class: 'navbar-item'%>
 								<a href="" class="navbar-item">Dashboard</a>
 								<hr class="navbar-divider">
 								<%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
 							</div>
 						</div>
 					<% end %>
-				</div>
-			</div>
+						</div>
+					</div>
 		</nav>
 
+		<script>
+		$(document).ready(function() {
+
+		// Check for click events on the navbar burger icon
+		$(".navbar-burger").click(function() {
+
+				// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+				$(".navbar-burger").toggleClass("is-active");
+				$(".navbar-menu").toggleClass("is-active");
+
+		});
+		});
+		</script>
 
 		<nav class="navbar has-shadow">
 			<div class="container">
@@ -98,17 +111,3 @@
 				</div>
 			</div>
 		</nav>
-
-		<script>
-		$(document).ready(function() {
-
-		// Check for click events on the navbar burger icon
-		$(".navbar-burger").click(function() {
-
-				// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-				$(".navbar-burger").toggleClass("is-active");
-				$(".navbar-menu").toggleClass("is-active");
-
-		});
-		});
-		</script>
