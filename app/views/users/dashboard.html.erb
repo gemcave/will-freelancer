@@ -122,7 +122,7 @@
 																			<p>
 																				<strong>Language</strong>
 																				<br>
-																				<%= current_user.about %>
+																				<%= current_user.language %>
 																			</p>
 																		</div>
 																		<div class="media-right">
@@ -142,7 +142,18 @@
                                 <hr class="h-10">
                                 
                                 <!-- Linked Account -->
-                                <article class="media"></article>
+                                <article class="media">
+																	<div class="content">
+																		<p>
+																			<strong>Linked Account</strong><br>
+																			<% if current_user.uid %>
+																				<span class="has-text-success">Facebook verified</span>
+																			<% else %>
+																				<%= link_to 'Connect to Facebook', user_facebook_omniauth_authorize_path, class: "has-text-danger" %>
+																			<% end %>
+																		</p>
+																	</div>
+																</article>
 
                             </div>
                         </div>
