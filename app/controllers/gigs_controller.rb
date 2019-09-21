@@ -1,7 +1,9 @@
 class GigsController < ApplicationController
+
+	protect_from_forgery except: [:upload_photo]
 	before_action :authenticate_user!, except: [:show]
 	before_action :set_gig, except: [:new, :create]
-	before_action :is_authorised, only: [:edit, :update]
+	before_action :is_authorised, only: [:edit, :update, :upload_photo, :delete_photo]
 	before_action :set_step, only: [:update, :edit]
 
 	def new
@@ -73,7 +75,18 @@ class GigsController < ApplicationController
 		else
 			redirect_to dashboard_path
 		end
-  end
+	end
+	
+	def upload_photo
+		@gig.photos.attach(params[:file])
+		render json: { success: true }
+	end
+
+	def delete_photo
+		@image = ActiveStorage::Attachment.find(params[:photo_id])
+		@image.purge
+		redirect_to edit_gig_path(@gig, step: 4)
+	end
 
   def show
 	end
