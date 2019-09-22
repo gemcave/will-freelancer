@@ -45,7 +45,7 @@
 							</a>
 							<div class="navbar-dropdown">
 								<%= link_to 'Profile', edit_user_registration_path, class: 'navbar-item'%>
-								<a href="" class="navbar-item">Dashboard</a>
+								<%= link_to 'Dashboard', dashboard_path, class: 'navbar-item' %>
 								<hr class="navbar-divider">
 								<%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
 							</div>
@@ -55,7 +55,59 @@
 					</div>
 		</nav>
 
-		<script>
+		<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("/gigs/#{params[:id]}") && !current_page?("/users/#{params[:id]}") %>
+			<nav class="navbar has-shadow" style="z-index: 5">
+				<div class="container">
+					<div class="navbar">
+						<%= link_to 'Dashboard', dashboard_path, class: 'navbar-item' %>
+
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">Selling</a>
+							<div class="navbar-dropdown">
+								<%= link_to 'Create New Gig', new_gig_path, class: 'navbar-item' %>
+								<a class="navbar-item">Buying</a>
+							</div>
+						</div>
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">Buying</a>
+							<div class="navbar-dropdown">
+								<a class="navbar-item">Post Request</a>
+								<a class="navbar-item">Manage Request</a>
+							</div>
+						</div>
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">Buyer Request</a>
+							<div class="navbar-dropdown">
+								<a class="navbar-item">Active Request</a>
+								<a class="navbar-item">Offers Sent</a>
+							</div>
+						</div>
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">Orders</a>
+							<div class="navbar-dropdown">
+								<a class="navbar-item">Selling Orders</a>
+								<a class="navbar-item">Buying Orders</a>
+							</div>
+						</div>
+
+						<%= link_to 'Earnings', dashboard_path, class: 'navbar-item' %>
+						<%= link_to 'Messages', dashboard_path, class: 'navbar-item' %>
+
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">Setting</a>
+							<div class="navbar-dropdown">
+								<a class="navbar-item">Payment Method</a>
+								<a class="navbar-item">Payout Method</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		<% end %>
+
+
+
+<script>
 		$(document).ready(function() {
 
 		// Check for click events on the navbar burger icon
@@ -68,51 +120,3 @@
 		});
 		});
 		</script>
-
-		<nav class="navbar has-shadow" style="z-index: 5">
-			<div class="container">
-				<div class="navbar">
-					<%= link_to 'Dashboard', dashboard_path, class: 'navbar-item' %>
-
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">Selling</a>
-						<div class="navbar-dropdown">
-							<%= link_to 'Create New Gig', new_gig_path, class: 'navbar-item' %>
-							<a class="navbar-item">Buying</a>
-						</div>
-					</div>
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">Buying</a>
-						<div class="navbar-dropdown">
-							<a class="navbar-item">Post Request</a>
-							<a class="navbar-item">Manage Request</a>
-						</div>
-					</div>
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">Buyer Request</a>
-						<div class="navbar-dropdown">
-							<a class="navbar-item">Active Request</a>
-							<a class="navbar-item">Offers Sent</a>
-						</div>
-					</div>
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">Orders</a>
-						<div class="navbar-dropdown">
-							<a class="navbar-item">Selling Orders</a>
-							<a class="navbar-item">Buying Orders</a>
-						</div>
-					</div>
-
-					<%= link_to 'Earnings', dashboard_path, class: 'navbar-item' %>
-					<%= link_to 'Messages', dashboard_path, class: 'navbar-item' %>
-
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">Setting</a>
-						<div class="navbar-dropdown">
-							<a class="navbar-item">Payment Method</a>
-							<a class="navbar-item">Payout Method</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>

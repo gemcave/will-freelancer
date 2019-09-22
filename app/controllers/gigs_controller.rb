@@ -88,7 +88,8 @@ class GigsController < ApplicationController
 		redirect_to edit_gig_path(@gig, step: 4)
 	end
 
-  def show
+	def show
+		@categories = Category.all
 	end
 	
 	private
