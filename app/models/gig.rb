@@ -3,6 +3,7 @@ class Gig < ApplicationRecord
 	belongs_to :category
 	
 	has_many :pricings
+	has_many :orders
 	has_many_attached :photos
 	has_rich_text :description
 
