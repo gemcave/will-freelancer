@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 	get '/dashboard', to: 'users#dashboard'
 	get '/users/:id', to: 'users#show'
 	post '/users/edit', to: 'users#update'
+	get '/selling_orders', to: 'orders#selling_orders'
+	get '/buying_orders', to: 'orders#buying_orders'
 
 	
 	resources :gigs do 
