@@ -14,12 +14,26 @@ class OrdersController < ApplicationController
 		redirect_to request.referrer
 	end
 
-	def selling_order
+	def selling_orders
 		@orders = current_user.selling_orders
 	end
 
-	def buying_order
+	def buying_orders
 		@orders = current_user.buying_orders
+	end
+
+	def complete
+		@order = Order.find(params[:id])
+
+		if !@order.completed?
+			if @order.completed!
+				flash[:notice] = "Saved..."
+			else
+				flash[:alert] = "Something went wrong..."
+			end
+
+			redirect_to request.referrer
+		end
 	end
 
 	private

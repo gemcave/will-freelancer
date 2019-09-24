@@ -25,7 +25,7 @@
 				<tr>
 					<td><%= o.created_at.strftime('%d %b %Y')%></td>
 					<td><%= o.seller_name %></td>
-					<td><%= o.title, gig_path(o.gig) %></td>
+					<td><%= link_to o.title, gig_path(o.gig) %></td>
 					<td><%= o.due_date.strftime('%d %b %Y')%></td>
 					<td><%= o.amount %></td>
 					<td>
@@ -34,7 +34,7 @@
 						</span>
 					</td>
 					<td>
-						<%= link_to 'Mark Complete', nil, class: "button is-small is-primary #{'is-hidden' if o.completed?}" %>
+						<%= link_to 'Mark Complete', complete_order_path(o), method: :put, class: "button is-small is-primary #{'is-hidden' if o.completed?}" %>
 					</td>
 				</tr>
 				<% end %>
