@@ -5,10 +5,13 @@ Rails.application.routes.draw do
 	
 	get '/dashboard', to: 'users#dashboard'
 	get '/users/:id', to: 'users#show'
+
 	post '/users/edit', to: 'users#update'
+	post '/offers', to: 'offers#create'
+
 	get '/selling_orders', to: 'orders#selling_orders'
 	get '/buying_orders', to: 'orders#buying_orders'
-	get '/all_requests', to: 'requests#list'
+	get '/all-requests', to: 'requests#list'
 
 	put '/orders/:id/complete', to: 'orders#complete', as: 'complete_order'
 
