@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("raty-js")
 
 window.Noty = require("noty")
 window.Dropzone = require("dropzone")
