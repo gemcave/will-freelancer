@@ -27,13 +27,6 @@
 						<td><%= o.request.budget %></td>
 						<td>$<%= o.amount %></td>
 						<td><%= pluralize(o.days, 'day') %></td>
-						<td>
-							<span class="tag <%= 'is-warning' if o.pending? %> 
-															 <%= 'is-success' if o.accepted? %> 
-															 <%= 'is-danger' if o.rejected? %>">
-									<%= o.status.capitalize %>
-							</span>
-						</td>
 					</tr>
 				<% end %>
 			</tbody>
