@@ -97,6 +97,20 @@
 																	</div>
 																</article>
 
+																<% if false %>
+																	<article class="media">
+																	<div class="content">
+																		<p>
+																			<strong>Mobile Number</strong><br>
+																			<% if @user.phone %>
+																				<span class="has-text-success">Mobile # verified</span>
+																			<% else %>
+																				<span class="has-text-danger">Mobile # unverified</span>
+																			<% end %>
+																		</p>
+																	</div>
+																</article>
+																<% end %>
                             </div>
                         </div>
                     </div>
@@ -156,7 +170,7 @@
 									</div>
 									<div class="card-content">
 										<!-- Sample Reviews -->
-										<% @reviews.each do |r| %>
+										<%  @reviews.each do |r| %>
 											<article class="media">
 													<figure class="media-left">
 															<p class="image is-64x64">
