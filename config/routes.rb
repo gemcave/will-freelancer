@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 	get '/request_offers/:id', to: 'requests#offers', as: 'request_offers'
 	get '/my_offers', to: 'requests#my_offers'
 	get '/search', to: 'pages#search'
+	get 'settings/payment', to: 'users#payment', as: 'settings_payment'
 	
 	post '/users/edit', to: 'users#update'
 	post '/offers', to: 'offers#create'

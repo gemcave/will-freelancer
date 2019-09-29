@@ -18,6 +18,8 @@ gem 'bulma-extensions-rails', '~> 1.0.30'
 gem 'faker', '=1.9.3'
 gem 'kaminari'
 
+gem 'stripe', '=4.18.1'
+
 gem 'devise', '= 4.7.1'
 gem 'omniauth', '= 1.9.0'
 gem 'omniauth-facebook', '= 5.0.0'
