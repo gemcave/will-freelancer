@@ -154,7 +154,7 @@ GEM
     orm_adapter (0.5.0)
     pg (1.1.4)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.4)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -273,7 +273,7 @@ DEPENDENCIES
   omniauth (= 1.9.0)
   omniauth-facebook (= 5.0.0)
   pg (>= 0.18, < 2.0)
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 6.0.0)
   sass-rails (~> 5)
   selenium-webdriver
